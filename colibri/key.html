@@ -1,0 +1,107 @@
+<HTML>
+<HEAD>
+<TITLE>URL текущего HTML-документа</TITLE>
+ <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
+</HEAD>
+<BODY>
+<canvas id="b" width="10000" height="200"></canvas>
+<SCRIPT LANGUAGE=JavaScript>
+var b_canvas = document.getElementById("b"); 
+var c_context = b_canvas.getContext("2d");
+
+
+ var White =function(r) {
+  this.color= "#000000";
+  this.n= 0+26*r;
+
+  this.y= 0;
+  this.w= 145;
+  this.k= 23+26*r;
+  this.l= 0;
+  
+ };
+
+var Black =function(r) {
+  this.color= "#000000";
+  this.n= 20+26*r;
+
+  this.y= 0;
+  this.w= 85;
+  this.k= 29+26*r;
+  this.l= 0;
+
+ };
+
+ Black.prototype.draw= function() {
+   
+
+    c_context.beginPath();
+    c_context.moveTo(this.n,this.l);
+    c_context.lineTo(this.n,this.w);
+    c_context.lineTo(this.k,this.w);
+    c_context.lineTo(this.k,this.y);
+       
+    c_context.closePath();
+    c_context.lineWidth = 1;
+    c_context.strokeStyle = "#000000";
+    c_context.stroke();
+    c_context.fillStyle = this.color;
+    c_context.fill(); 
+    c_context.save();   
+    
+  };
+ White.prototype.draw= function() {
+   
+
+    c_context.beginPath();
+    c_context.moveTo(this.n,this.l);
+    c_context.lineTo(this.n,this.w);
+    c_context.lineTo(this.k,this.w);
+    c_context.lineTo(this.k,this.y);
+       
+    c_context.closePath();
+    c_context.lineWidth = 1;
+    c_context.strokeStyle = "#000000";
+    c_context.stroke();
+    c_context.save();   
+    
+  };
+
+var q = 0
+var u = 0
+var h = 0
+var stars = [];
+
+for(j=0;j<88;j++)
+{var t = j%12;
+if((t==1)||(t==4)||(t==6)||(t==9)||(t==11))
+{var f = u%10;
+if((f==1)||(f==3)||(f==6)||(f==8))
+{
+var key2 =new Black(++h);
+stars.push(key2);
+key2.draw(); 
+h++;
+u++;
+}
+else
+{var key2 =new Black(h++);
+stars.push(key2);
+key2.draw();
+u++ 
+}}
+else
+{
+var key1 =new White(q);
+stars.push(key1);
+key1.draw();
+q++;}};
+
+
+
+
+
+</SCRIPT>
+</BODY>
+</HTML>
